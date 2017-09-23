@@ -32,7 +32,7 @@ int main(int lenargs, char** args) {
     printf("Using accuracy = %lu\n", accuracy);
 
     double part = (double) 1 / (double) accuracy;
-    const double r = 0.5f / 64;
+    const double r = 0.5f * 16;
     double result0 = 0.0f; // Inner pi
     double result1 = 0.0f; // Outer pi
     for (size_t i = 1; i < accuracy; i++) {
@@ -50,6 +50,7 @@ int main(int lenargs, char** args) {
         float t = circlesy(r, hx) - m * hx;
         y0 = m * x0 + t;
         y1 = m * x1 + t;
+        y = y0 - y1;
         result1 += sqrt(x*x + y*y);
     }
 
